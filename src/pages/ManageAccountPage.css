@@ -1,0 +1,86 @@
+.manage-account {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #e0e0e0;
+}
+
+.manage-account h2 {
+  margin-bottom: 1.5rem;
+  color: #ff9800;
+}
+
+.manage-account .tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.manage-account .tabs button {
+  padding: 0.6rem 1.5rem;
+  background: #2a2a3d;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.manage-account .tabs button.active {
+  background: #ff9800;
+}
+
+.funds-info {
+  background: #1e1e2f;
+  padding: 1.5rem;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.funds-info p {
+  margin: 0;
+}
+
+.settings {
+  background: #1e1e2f;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.setting-item {
+  margin-bottom: 1.5rem;
+}
+
+.setting-item label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.setting-item input,
+.setting-item select {
+  width: 100%;
+  padding: 0.7rem;
+  background: #2a2a3d;
+  border: 1px solid #3e3e50;
+  border-radius: 4px;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.setting-item button {
+  padding: 0.5rem 1rem;
+  background: #ff9800;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.mt5-details-popup {
+  background: #2a2a3d;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}

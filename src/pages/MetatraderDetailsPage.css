@@ -1,0 +1,36 @@
+.metatrader-details {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #1e1e2f;
+  border-radius: 8px;
+  color: #e0e0e0;
+}
+
+.metatrader-details h2 {
+  color: #ff9800;
+  margin-bottom: 1.5rem;
+}
+
+.metatrader-details p {
+  margin: 0.5rem 0;
+}
+
+.metatrader-details input {
+  width: 100%;
+  padding: 0.7rem;
+  background: #2a2a3d;
+  border: 1px solid #3e3e50;
+  border-radius: 4px;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.metatrader-details button {
+  padding: 0.6rem 1.2rem;
+  background: #ff9800;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}

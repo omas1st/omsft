@@ -1,0 +1,43 @@
+.withdraw-page {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #e0e0e0;
+}
+
+.withdraw-page h2 {
+  color: #ff9800;
+  margin-bottom: 1.5rem;
+}
+
+.withdraw-page label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.withdraw-page input {
+  width: 100%;
+  padding: 0.8rem;
+  background: #2a2a3d;
+  border: 1px solid #3e3e50;
+  border-radius: 4px;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.withdraw-page .error {
+  color: #ff4d4d;
+  margin-bottom: 1rem;
+}
+
+.withdraw-page button {
+  padding: 0.8rem 1.5rem;
+  background: #ff9800;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+}

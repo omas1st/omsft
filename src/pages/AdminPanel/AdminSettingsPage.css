@@ -1,0 +1,37 @@
+.admin-settings {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #1e1e2f;
+  border-radius: 8px;
+  color: #e0e0e0;
+}
+
+.admin-settings h2 {
+  color: #ff9800;
+  margin-bottom: 1.5rem;
+}
+
+.admin-settings label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.admin-settings input {
+  width: 100%;
+  padding: 0.7rem;
+  background: #2a2a3d;
+  border: 1px solid #3e3e50;
+  color: #fff;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.admin-settings button {
+  padding: 0.6rem 1.5rem;
+  background: #ff9800;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -1,0 +1,57 @@
+.deposit-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #e0e0e0;
+}
+
+.deposit-page h2 {
+  color: #ff9800;
+  margin-bottom: 1.5rem;
+}
+
+.deposit-page label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.deposit-page input[type="number"],
+.deposit-page input[type="text"],
+.deposit-page input[type="email"],
+.deposit-page input[type="file"] {
+  width: 100%;
+  padding: 0.8rem;
+  background: #2a2a3d;
+  border: 1px solid #3e3e50;
+  border-radius: 4px;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.deposit-page .error {
+  color: #ff4d4d;
+  margin-bottom: 1rem;
+}
+
+.deposit-page button {
+  padding: 0.8rem 1.5rem;
+  background: #ff9800;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.deposit-page button:hover {
+  background: #e68900;
+}
+
+.deposit-processing {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 2rem;
+  background: #1e1e2f;
+  border-radius: 8px;
+}

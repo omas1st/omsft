@@ -1,0 +1,109 @@
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #e0e0e0;
+}
+
+.dashboard h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.account-info {
+  background: #1e1e2f;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.balance {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2rem;
+}
+
+.balance button {
+  background: #ff9800;
+  border: none;
+  color: #fff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.action-buttons button {
+  padding: 0.7rem 1.5rem;
+  background: #2a2a3d;
+  border: 1px solid #3e3e50;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.action-buttons button:hover {
+  background: #3e3e50;
+}
+
+.referral-popup {
+  background: #1e1e2f;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.portfolio {
+  background: #1e1e2f;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tab {
+  padding: 0.5rem 1rem;
+  background: #2a2a3d;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #ff9800;
+}
+
+.tab-content {
+  padding: 1rem;
+  background: #2a2a3d;
+  border-radius: 4px;
+}
+
+.market-section {
+  background: #1e1e2f;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.tradingview-container {
+  height: 400px;
+}
