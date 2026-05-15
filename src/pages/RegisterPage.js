@@ -17,23 +17,22 @@ const RegisterPage = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // Calculate password strength based on multiple criteria
-  const calculateStrength = (pwd) => {
-    let score = 0;
-    if (pwd.length >= 8) score++;
-    if (pwd.length >= 12) score++;
-    if (/[A-Z]/.test(pwd)) score++;
-    if (/[a-z]/.test(pwd)) score++;
-    if (/\d/.test(pwd)) score++;
-    if (/[^A-Za-z0-9]/.test(pwd)) score++;
+  // Password requirement checks
+  const passwordChecks = {
+    minLength: password.length >= 8,
+    hasLower: /[a-z]/.test(password),
+    hasUpper: /[A-Z]/.test(password),
+    hasNumber: /\d/.test(password),
+    hasSymbol: /[^A-Za-z0-9]/.test(password),
+  };
 
-    if (pwd.length < 8) return { label: 'Weak', strength: 25, color: '#e74c3c' };
+  const strength = (() => {
+    const score = Object.values(passwordChecks).filter(Boolean).length;
+    if (password.length < 8) return { label: 'Weak', strength: 25, color: '#e74c3c' };
     if (score <= 2) return { label: 'Weak', strength: 25, color: '#e74c3c' };
     if (score <= 4) return { label: 'Medium', strength: 60, color: '#f39c12' };
     return { label: 'Strong', strength: 100, color: '#27ae60' };
-  };
-
-  const strength = calculateStrength(password);
+  })();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -59,7 +58,7 @@ const RegisterPage = () => {
           <CountryDropdown value={country} onChange={setCountry} />
         </div>
         <div className="form-group">
-          <label>Email (case insensitive)</label>
+          <label>Email </label>
           <input type="email" value={email} onChange={e => setEmail(e.target.value)} required />
         </div>
         <div className="form-group">
@@ -71,12 +70,12 @@ const RegisterPage = () => {
               onChange={e => setPassword(e.target.value)}
               required
             />
-            <button type="button" onClick={() => setShowPassword(!showPassword)}>
+            <button type="button" onClick={() => setShowPassword(!showPassword)} className="toggle-visibility">
               {showPassword ? '🙈' : '👁️'}
             </button>
           </div>
 
-          {/* Professional strength indicator bar */}
+          {/* Strength bar */}
           <div className="password-strength-container">
             <div className="password-strength-bar-bg">
               <div
@@ -90,6 +89,30 @@ const RegisterPage = () => {
             <span className="password-strength-label" style={{ color: strength.color }}>
               {strength.label}
             </span>
+          </div>
+
+          {/* Requirement signals */}
+          <div className="password-signals">
+            <div className={`signal ${passwordChecks.minLength ? 'valid' : 'invalid'}`}>
+              <span className="signal-icon">{passwordChecks.minLength ? '✔' : '✘'}</span>
+              <span className="signal-text">At least 8 characters</span>
+            </div>
+            <div className={`signal ${passwordChecks.hasLower ? 'valid' : 'invalid'}`}>
+              <span className="signal-icon">{passwordChecks.hasLower ? '✔' : '✘'}</span>
+              <span className="signal-text">Lowercase letter (a–z)</span>
+            </div>
+            <div className={`signal ${passwordChecks.hasUpper ? 'valid' : 'invalid'}`}>
+              <span className="signal-icon">{passwordChecks.hasUpper ? '✔' : '✘'}</span>
+              <span className="signal-text">Uppercase letter (A–Z)</span>
+            </div>
+            <div className={`signal ${passwordChecks.hasNumber ? 'valid' : 'invalid'}`}>
+              <span className="signal-icon">{passwordChecks.hasNumber ? '✔' : '✘'}</span>
+              <span className="signal-text">Number (0–9)</span>
+            </div>
+            <div className={`signal ${passwordChecks.hasSymbol ? 'valid' : 'invalid'}`}>
+              <span className="signal-icon">{passwordChecks.hasSymbol ? '✔' : '✘'}</span>
+              <span className="signal-text">Symbol (!@#$%^&*)</span>
+            </div>
           </div>
         </div>
 

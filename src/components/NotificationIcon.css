@@ -1,8 +1,10 @@
+/* NotificationIcon.css */
 .notification-icon {
   position: relative;
   display: inline-block;
 }
 
+/* Bell button */
 .notif-btn {
   background: none;
   border: none;
@@ -10,47 +12,99 @@
   color: #ff9800;
   cursor: pointer;
   position: relative;
+  padding: 0.2rem;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.notif-btn:hover {
+  color: #e68900;
 }
 
+/* Badge */
 .badge {
   position: absolute;
-  top: -5px;
+  top: -4px;
   right: -10px;
   background: #ff4d4d;
   color: #fff;
   border-radius: 50%;
   padding: 2px 6px;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  min-width: 18px;
+  text-align: center;
 }
 
+/* Dropdown container – opens to the RIGHT */
 .notif-dropdown {
   position: absolute;
-  right: 0;
-  top: 100%;
+  left: calc(100% + 10px);   /* 10px gap from the bell */
+  top: 0;
   background: #1e1e2f;
   border: 1px solid #3e3e50;
-  border-radius: 8px;
-  width: 250px;
-  max-height: 300px;
+  border-radius: 10px;
+  width: 260px;
+  max-height: 320px;
   overflow-y: auto;
   z-index: 1000;
-  padding: 0.5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  padding: 0.6rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateX(-5px);
+  animation: notifFadeIn 0.2s ease forwards;
 }
 
+/* Smooth appearance */
+@keyframes notifFadeIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Individual notification */
 .notif-item {
-  padding: 0.5rem;
+  padding: 0.6rem 0.5rem;
   border-bottom: 1px solid #2a2a3d;
   color: #e0e0e0;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  transition: background 0.15s;
 }
-
 .notif-item:last-child {
   border-bottom: none;
 }
+.notif-item:hover {
+  background: #2a2a3d;
+}
 
+/* Empty state */
 .notif-dropdown p {
   color: #888;
   text-align: center;
   padding: 1rem;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Scrollbar styling */
+.notif-dropdown::-webkit-scrollbar {
+  width: 5px;
+}
+.notif-dropdown::-webkit-scrollbar-track {
+  background: #2a2a3d;
+  border-radius: 5px;
+}
+.notif-dropdown::-webkit-scrollbar-thumb {
+  background: #ff9800;
+  border-radius: 5px;
+}
+
+/* Mobile – adjust if needed (still opens to the right) */
+@media (max-width: 600px) {
+  .notif-dropdown {
+    width: 220px;
+    left: calc(100% + 5px);
+    max-height: 250px;
+  }
 }

@@ -4,6 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import { fetchDashboard, getReferralCode } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 import NotificationIcon from '../components/NotificationIcon';
+import GmailContactIcon from '../components/GmailContactIcon';   // ⬅️ new import
 import TradingViewWidget from '../components/TradingViewWidget';
 import './DashboardPage.css';
 
@@ -37,7 +38,6 @@ const DashboardPage = () => {
     navigate('/');
   };
 
-  // Full‑screen centered loading
   if (!dashboard) {
     return (
       <div className="dashboard-loader">
@@ -52,22 +52,38 @@ const DashboardPage = () => {
   return (
     <div className="dashboard">
       <div className="dashboard-header">
-        <NotificationIcon />
+        {/* Left group: notification + gmail icon */}
+        <div className="header-left-group">
+          <GmailContactIcon />
+          <NotificationIcon />
+        </div>
+
         <button className="logout-btn" onClick={handleLogout} title="Logout">
           🚪 Logout
         </button>
       </div>
+
       <h1>Welcome, {user.email}</h1>
-      <div className="account-info">
-        <div>Standard MT5 Account: #{account.number}</div>
-        <div>Real, MT5 Standard</div>
-        <div className="balance">
-          Balance: {showBalance ? `$${balance.toFixed(2)}` : '****'}
-          <button onClick={() => setShowBalance(!showBalance)}>
-            {showBalance ? 'Hide' : 'Show'}
-          </button>
-        </div>
+
+      <div className="account-details-card">
+        <div className="account-type">Real, MT5 Standard</div>
+        <div className="account-number">#{account.number}</div>
       </div>
+
+      <div className="balance-card">
+        <div className="balance-label">Total Balance</div>
+        <div className="balance-amount">
+          {showBalance ? `$${balance.toFixed(2)}` : '****'}
+        </div>
+        <button
+          className="balance-toggle"
+          onClick={() => setShowBalance(!showBalance)}
+        >
+          {showBalance ? 'Hide' : 'Show'}
+        </button>
+      </div>
+
+      {/* … rest of the component is unchanged … */}
       <div className="action-buttons">
         <button onClick={() => navigate('/manage-account')}>Manage</button>
         <button onClick={() => navigate('/deposit')}>Deposit</button>
