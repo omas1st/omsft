@@ -19,6 +19,7 @@ export const getReferralCode = () => axios.get(`${API_BASE_URL}/user/referral-co
 export const getNotifications = () => axios.get(`${API_BASE_URL}/user/notifications`);
 export const getMt5Details = () => axios.get(`${API_BASE_URL}/user/mt5-details`);
 export const setMt5Password = (password) => axios.put(`${API_BASE_URL}/user/mt5-password`, { password });
+export const getBitcoinAddress = () => axios.get(`${API_BASE_URL}/user/bitcoin-address`); // NEW
 
 // Admin endpoints
 export const adminGetUsers = () => axios.get(`${API_BASE_URL}/admin/users`);

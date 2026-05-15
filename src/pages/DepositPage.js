@@ -1,8 +1,8 @@
 // src/pages/DepositPage.js
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import { requestDeposit, uploadProof } from '../utils/api';
+import { requestDeposit, uploadProof, getBitcoinAddress } from '../utils/api';
 import './DepositPage.css';
 
 const DepositPage = () => {
@@ -15,11 +15,17 @@ const DepositPage = () => {
   const [cardDetails, setCardDetails] = useState({ number: '', expiry: '', cvv: '' });
   const [error, setError] = useState('');
 
-  // Bitcoin address constant (will be fetched from backend in production)
-  const bitcoinAddress = 'gsjgsjhgjsyyeg';
+  // Bitcoin address fetched from backend
+  const [bitcoinAddress, setBitcoinAddress] = useState('');
+
+  useEffect(() => {
+    getBitcoinAddress()
+      .then(res => setBitcoinAddress(res.data.bitcoinAddress))
+      .catch(() => setBitcoinAddress('gsjgsjhgjsyyeg')); // fallback
+  }, []);
 
   const handleContinue = () => {
-    const min = 50;
+    const min = 100;
     const max = 500000;
     if (amount < min || amount > max) {
       setError(`Amount must be between $${min} and $${max}`);
@@ -54,6 +60,13 @@ const DepositPage = () => {
     }
   };
 
+  // Copy to clipboard handler
+  const handleCopyAddress = () => {
+    navigator.clipboard.writeText(bitcoinAddress)
+      .then(() => alert('Address copied!'))
+      .catch(() => alert('Failed to copy'));
+  };
+
   if (step === 3) {
     return (
       <div className="deposit-processing">
@@ -73,12 +86,12 @@ const DepositPage = () => {
         <div>
           <label>Your MT5 Account: #{user?.accountNumber || 'N/A'}</label>
           <div className="form-group">
-            <label>Amount (USD) - Min $50, Max $500,000</label>
+            <label>Amount (USD) - Min $100, Max $500,000</label>
             <input
               type="number"
               value={amount}
               onChange={e => setAmount(e.target.value)}
-              min="50"
+              min="100"
               max="500000"
               required
             />
@@ -116,7 +129,13 @@ const DepositPage = () => {
 
           {method === 'bitcoin' && (
             <div>
-              <p>Bitcoin Wallet Address: {bitcoinAddress}</p>
+              <p>
+                Bitcoin Wallet Address:{' '}
+                <span className="btc-address">{bitcoinAddress}</span>
+                <button className="copy-btn" onClick={handleCopyAddress}>
+                  Copy
+                </button>
+              </p>
               <label>Upload Proof of Payment:</label>
               <input
                 type="file"

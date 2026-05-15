@@ -12,12 +12,12 @@ const WithdrawPage = () => {
   const [error, setError] = useState('');
 
   const handleWithdraw = async () => {
-    if (!amount || amount < 50 || amount > 500000) {
-      setError('Amount must be between $50 and $500,000');
+    if (!amount || amount < 100 || amount > 500000) {
+      setError('Amount must be between $100 and $500,000');
       return;
     }
     if (user.balance < amount) {
-      setError('Insufficient balance. Minimum required is $50.');
+      setError('Insufficient balance. Minimum required is $100.');
       return;
     }
     if (!bitcoinAddress) {
@@ -37,10 +37,10 @@ const WithdrawPage = () => {
     <div className="withdraw-page">
       <h2>Withdraw</h2>
       <div className="form-group">
-        <label>Amount (USD) - Min $50, Max $500,000</label>
+        <label>Amount (USD) - Min $100, Max $500,000</label>
         <input type="number" value={amount} onChange={e => setAmount(e.target.value)} />
       </div>
-      {user.balance < 50 && <p className="error">Your balance is below $50. Deposit first.</p>}
+      {user.balance < 100 && <p className="error">Your balance is below $100. Deposit first.</p>}
       <div className="form-group">
         <label>Bitcoin Wallet Address</label>
         <input type="text" value={bitcoinAddress} onChange={e => setBitcoinAddress(e.target.value)} />

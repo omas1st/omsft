@@ -8,12 +8,13 @@ import TradingViewWidget from '../components/TradingViewWidget';
 import './DashboardPage.css';
 
 const DashboardPage = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const [dashboard, setDashboard] = useState(null);
   const [showBalance, setShowBalance] = useState(true);
   const [showReferral, setShowReferral] = useState(false);
   const [referralCode, setReferralCode] = useState('');
+  const [activeTab, setActiveTab] = useState('open');
 
   useEffect(() => {
     fetchDashboard()
@@ -31,14 +32,31 @@ const DashboardPage = () => {
     }
   };
 
-  if (!dashboard) return <div>Loading...</div>;
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
+  // Full‑screen centered loading
+  if (!dashboard) {
+    return (
+      <div className="dashboard-loader">
+        <div className="loader-ring"></div>
+      </div>
+    );
+  }
 
   const { account, balance } = dashboard;
   const hasDeposit = balance > 0;
 
   return (
     <div className="dashboard">
-      <NotificationIcon />
+      <div className="dashboard-header">
+        <NotificationIcon />
+        <button className="logout-btn" onClick={handleLogout} title="Logout">
+          🚪 Logout
+        </button>
+      </div>
       <h1>Welcome, {user.email}</h1>
       <div className="account-info">
         <div>Standard MT5 Account: #{account.number}</div>
@@ -74,16 +92,34 @@ const DashboardPage = () => {
       <div className="portfolio">
         <h3>My Portfolio</h3>
         <div className="tabs">
-          <button className="tab active">Open Trades</button>
-          <button className="tab">Pending Trades</button>
-          <button className="tab">Closed Trades</button>
+          <button
+            className={`tab ${activeTab === 'open' ? 'active' : ''}`}
+            onClick={() => setActiveTab('open')}
+          >
+            Open Trades
+          </button>
+          <button
+            className={`tab ${activeTab === 'pending' ? 'active' : ''}`}
+            onClick={() => setActiveTab('pending')}
+          >
+            Pending Trades
+          </button>
+          <button
+            className={`tab ${activeTab === 'closed' ? 'active' : ''}`}
+            onClick={() => setActiveTab('closed')}
+          >
+            Closed Trades
+          </button>
         </div>
         <div className="tab-content">
-          {hasDeposit ? (
-            <p>Start trading now.</p>
-          ) : (
-            <p>No open positions. Deposit and start earning now.</p>
-          )}
+          {activeTab === 'open' &&
+            (hasDeposit ? (
+              <p>Start trading now.</p>
+            ) : (
+              <p>No open positions. Deposit and start earning now.</p>
+            ))}
+          {activeTab === 'pending' && <p>No pending orders at the moment.</p>}
+          {activeTab === 'closed' && <p>Your closed positions will appear here.</p>}
         </div>
       </div>
 

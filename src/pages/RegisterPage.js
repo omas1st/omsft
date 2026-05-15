@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { registerUser } from '../utils/api';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import CountryDropdown from '../components/CountryDropdown'; // you'll create a dropdown with all countries
+import CountryDropdown from '../components/CountryDropdown';
 import './RegisterPage.css';
 
 const RegisterPage = () => {
@@ -17,11 +17,23 @@ const RegisterPage = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const passwordStrength = () => {
-    if (password.length < 6) return 'Weak';
-    if (password.length < 10) return 'Medium';
-    return 'Strong';
+  // Calculate password strength based on multiple criteria
+  const calculateStrength = (pwd) => {
+    let score = 0;
+    if (pwd.length >= 8) score++;
+    if (pwd.length >= 12) score++;
+    if (/[A-Z]/.test(pwd)) score++;
+    if (/[a-z]/.test(pwd)) score++;
+    if (/\d/.test(pwd)) score++;
+    if (/[^A-Za-z0-9]/.test(pwd)) score++;
+
+    if (pwd.length < 8) return { label: 'Weak', strength: 25, color: '#e74c3c' };
+    if (score <= 2) return { label: 'Weak', strength: 25, color: '#e74c3c' };
+    if (score <= 4) return { label: 'Medium', strength: 60, color: '#f39c12' };
+    return { label: 'Strong', strength: 100, color: '#27ae60' };
   };
+
+  const strength = calculateStrength(password);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,11 +65,34 @@ const RegisterPage = () => {
         <div className="form-group">
           <label>Password</label>
           <div className="password-wrapper">
-            <input type={showPassword ? 'text' : 'password'} value={password} onChange={e => setPassword(e.target.value)} required />
-            <button type="button" onClick={() => setShowPassword(!showPassword)}>{showPassword ? '🙈' : '👁️'}</button>
+            <input
+              type={showPassword ? 'text' : 'password'}
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              required
+            />
+            <button type="button" onClick={() => setShowPassword(!showPassword)}>
+              {showPassword ? '🙈' : '👁️'}
+            </button>
           </div>
-          <span className={`password-strength ${passwordStrength().toLowerCase()}`}>{passwordStrength()}</span>
+
+          {/* Professional strength indicator bar */}
+          <div className="password-strength-container">
+            <div className="password-strength-bar-bg">
+              <div
+                className="password-strength-bar-fill"
+                style={{
+                  width: `${strength.strength}%`,
+                  backgroundColor: strength.color
+                }}
+              ></div>
+            </div>
+            <span className="password-strength-label" style={{ color: strength.color }}>
+              {strength.label}
+            </span>
+          </div>
         </div>
+
         <div className="form-group">
           <label>Partner Code (optional)</label>
           <input type="text" value={partnerCode} onChange={e => setPartnerCode(e.target.value)} />
