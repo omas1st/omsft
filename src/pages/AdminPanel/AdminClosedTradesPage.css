@@ -1,5 +1,8 @@
 .admin-closed-trades {
   padding: 20px;
+  /* ------ containment fix ------ */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .create-btn {
   background: #00c853;
@@ -11,6 +14,7 @@
   margin-bottom: 15px;
 }
 table {
+  display: table;                 /* reset from global block */
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
@@ -74,9 +78,10 @@ th, td {
   color: white;
 }
 
+/* Keep the horizontal scroll behaviour for small screens */
 .trades-table,
 .admin-closed-trades table {
-  display: block;
-  overflow-x: auto;
-  white-space: nowrap;
+  display: table;
+  overflow-x: visible;
+  white-space: normal;
 }

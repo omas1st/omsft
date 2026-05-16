@@ -96,14 +96,21 @@ svg {
   }
 }
 
-/* Fix all tables – make them scroll horizontally on small screens */
-table {
+/* ===== Table responsiveness helper (replaces old global table rule) ===== */
+.table-responsive {
   width: 100%;
-  display: block;
   overflow-x: auto;
-  white-space: nowrap;
   -webkit-overflow-scrolling: touch;
 }
+
+.table-responsive table {
+  width: 100%;
+  white-space: nowrap;
+}
+
+/* Remove the old global table rule that caused problems:
+   table { display: block; overflow-x: auto; ... }
+   It is no longer present. */
 
 /* Better touch targets for buttons on mobile */
 button,
@@ -122,7 +129,7 @@ textarea {
 
 /* Additional fix for homepage */
 .homepage {
-  width: 100% !important; /* replace 100vw */
+  width: 100% !important;
   overflow-x: hidden;
 }
 

@@ -2,6 +2,7 @@
   min-height: 100vh;
   background: #121212;
   color: #e0e0e0;
+  overflow-x: hidden;            /* prevent whole page overflow */
 }
 
 .admin-navbar {
@@ -40,4 +41,5 @@
 
 .admin-content {
   padding: 2rem;
+  overflow-x: hidden;            /* extra safety */
 }
