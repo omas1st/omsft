@@ -1,43 +1,102 @@
+/* TradingViewWidget.css */
+
 .tradingview-wrapper {
   position: relative;
   width: 100%;
-  height: 500px;
-  margin: 20px 0;
+  /* Use a more flexible height for mobile */
+  height: 50vh;        /* 50% of viewport height */
+  min-height: 320px;   /* Ensure minimum usability */
+  max-height: 70vh;
+  margin: 12px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #131722; /* match TradingView dark theme */
 }
 
+/* Skeleton loader – subtle, mobile-optimized */
 .tradingview-skeleton {
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: #1e1e2f;
+  background: #131722;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 2;
+  backdrop-filter: blur(2px);
 }
 
 .skeleton-chart {
   width: 90%;
   height: 80%;
-  background: linear-gradient(135deg, #2a2a40, #1e1e2f);
-  border-radius: 8px;
-  animation: pulse 1.5s infinite;
+  background: linear-gradient(135deg, #2a2e3f, #1e222d);
+  border-radius: 12px;
+  animation: pulse 1.2s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  0% { opacity: 0.5; }
+  0% { opacity: 0.6; }
   50% { opacity: 1; }
-  100% { opacity: 0.5; }
+  100% { opacity: 0.6; }
 }
 
+/* Hidden/visible transitions */
 .tradingview-container.hidden {
   opacity: 0;
   position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .tradingview-container.visible {
   opacity: 1;
+  position: relative;
   z-index: 1;
+  width: 100%;
+  height: 100%;
 }
 
+/* --- Mobile (small screens) specific improvements --- */
+@media (max-width: 768px) {
+  .tradingview-wrapper {
+    height: 45vh;      /* Slightly smaller on portrait */
+    min-height: 280px;
+    margin: 8px 0;
+    border-radius: 12px;
+  }
+
+  .skeleton-chart {
+    width: 95%;
+    height: 85%;
+    border-radius: 8px;
+  }
+
+  /* Optional: hide the toolbar top bar for more chart space */
+  /* TradingView widget’s own toolbar can be hidden via widget config.
+     This CSS targets elements if needed, but prefer widget options. */
+}
+
+/* For very narrow devices (≤ 480px) */
+@media (max-width: 480px) {
+  .tradingview-wrapper {
+    height: 40vh;
+    min-height: 260px;
+    margin: 6px 0;
+  }
+}
+
+/* Landscape orientation on mobile – give more height */
+@media (max-width: 896px) and (orientation: landscape) {
+  .tradingview-wrapper {
+    height: 70vh;
+    min-height: 300px;
+  }
+}
+
+/* Improve touch targets for any widget controls (if widget creates buttons) */
+.tradingview-container button,
+.tradingview-container a {
+  touch-action: manipulation;
+}
