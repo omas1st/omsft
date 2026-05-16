@@ -145,7 +145,7 @@ const TradeSection = ({ balance }) => {
           <label>Take Profit</label>
           <input
             type="number"
-            placeholder="Optional"
+            placeholder="0.0"
             value={takeProfit}
             onChange={(e) => setTakeProfit(e.target.value)}
           />
@@ -155,7 +155,7 @@ const TradeSection = ({ balance }) => {
           <label>Stop Loss</label>
           <input
             type="number"
-            placeholder="Optional"
+            placeholder="0.0"
             value={stopLoss}
             onChange={(e) => setStopLoss(e.target.value)}
           />
