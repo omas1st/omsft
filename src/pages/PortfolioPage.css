@@ -48,3 +48,10 @@
   margin-bottom: 10px;
   color: #00c853;
 }
+
+.trades-table,
+.admin-closed-trades table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}

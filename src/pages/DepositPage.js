@@ -143,7 +143,7 @@ const DepositPage = () => {
                 accept="image/*"
                 required
               />
-              <p>Processing time: 1 minute to 24 hours.</p>
+              <p>Processing time: 1 minute to 30 minutes.</p>
             </div>
           )}
 
@@ -177,7 +177,7 @@ const DepositPage = () => {
           )}
 
           {error && <div className="error">{error}</div>}
-          <button onClick={handleDepositSubmit}>Submit Deposit Request</button>
+          <button onClick={handleDepositSubmit}>Submit Deposit</button>
         </div>
       )}
     </div>

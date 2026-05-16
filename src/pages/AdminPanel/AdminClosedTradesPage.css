@@ -73,3 +73,10 @@ th, td {
   background: #555;
   color: white;
 }
+
+.trades-table,
+.admin-closed-trades table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}

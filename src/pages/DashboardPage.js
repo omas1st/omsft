@@ -196,8 +196,8 @@ const DashboardPage = () => {
         <button onClick={() => navigate('/withdraw')}>Withdraw</button>
         <button onClick={() => navigate('/transfer')}>Transfer</button>
         <button onClick={handleReferral}>Refer a Friend</button>
-        <button onClick={() => navigate('/metatrader-details')}>Metatrader Login Details</button>
-        <button onClick={() => navigate('/trade')}>Full Trade Page</button>
+        <button onClick={() => navigate('/metatrader-details')}>Metatrader</button>
+        <button onClick={() => navigate('/trade')}>Trade</button>
         <button onClick={() => navigate('/portfolio')}>My Portfolio</button>
       </div>
 

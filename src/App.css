@@ -1,38 +1,149 @@
-.App {
-  text-align: center;
+/* ===== GLOBAL RESPONSIVE RESET ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+  background-color: #0f0f1a;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
+#root {
+  width: 100%;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  overflow-x: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+/* Force all media to be responsive */
+img,
+video,
+iframe,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Specific fix for TradingView widget */
+.tradingview-wrapper iframe,
+.tradingview-container iframe {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 300px;
+}
+
+/* All page containers – make them shrink on mobile */
+.dashboard,
+.deposit-page,
+.withdraw-page,
+.transfer-page,
+.register-page,
+.login-page,
+.forgot-password-page,
+.manage-account,
+.metatrader-details,
+.admin-settings,
+.admin-deposits,
+.admin-users,
+.portfolio-page,
+.trade-page {
+  width: 100%;
+  max-width: 100% !important;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Keep original max-width for large screens, but never exceed viewport */
+@media (min-width: 768px) {
+  .dashboard {
+    max-width: 1200px;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
-  to {
-    transform: rotate(360deg);
+  .deposit-page,
+  .withdraw-page,
+  .transfer-page,
+  .forgot-password-page {
+    max-width: 650px;
+  }
+  .register-page,
+  .login-page {
+    max-width: 540px;
+  }
+  .manage-account {
+    max-width: 850px;
+  }
+  .metatrader-details,
+  .admin-settings {
+    max-width: 600px;
+  }
+}
+
+/* Fix all tables – make them scroll horizontally on small screens */
+table {
+  width: 100%;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Better touch targets for buttons on mobile */
+button,
+a,
+input,
+select {
+  touch-action: manipulation;
+}
+
+/* Prevent text resize on orientation change */
+input,
+select,
+textarea {
+  font-size: 16px; /* Prevents iOS zoom on focus */
+}
+
+/* Additional fix for homepage */
+.homepage {
+  width: 100% !important; /* replace 100vw */
+  overflow-x: hidden;
+}
+
+/* Fix for any absolute positioned dropdown that might overflow */
+.notif-dropdown {
+  left: auto !important;
+  right: 0 !important;
+}
+
+/* Ensure any fixed-width cards shrink */
+.balance-card,
+.account-details-card,
+.portfolio,
+.market-section {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Responsive base font for readability */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
   }
 }
