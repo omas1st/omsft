@@ -38,10 +38,20 @@
 /* Dropdown container – opens to the RIGHT */
 .notif-dropdown {
   position: absolute;
-  right: 0; /* instead of left: calc(100%+10px) */
-  left: auto;
-  top: 100%;
-  margin-top: 8px;
+  left: calc(100% + 10px);   /* 10px gap from the bell */
+  top: 0;
+  background: #1e1e2f;
+  border: 1px solid #3e3e50;
+  border-radius: 10px;
+  width: 260px;
+  max-height: 320px;
+  overflow-y: auto;
+  z-index: 1000;
+  padding: 0.6rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateX(-5px);
+  animation: notifFadeIn 0.2s ease forwards;
 }
 
 /* Smooth appearance */
