@@ -6,7 +6,6 @@ const TradingViewWidget = () => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // Preconnect to TradingView CDN
     const link = document.createElement('link');
     link.rel = 'preconnect';
     link.href = 'https://s3.tradingview.com';
@@ -27,7 +26,8 @@ const TradingViewWidget = () => {
           locale: 'en',
           toolbar_bg: '#f1f3f6',
           enable_publishing: false,
-          hide_side_toolbar: false,
+          hide_side_toolbar: true,      // side panel hidden
+          hide_top_toolbar: false,      // top toolbar visible again
           allow_symbol_change: true,
           container_id: containerRef.current.id,
         });
@@ -37,7 +37,6 @@ const TradingViewWidget = () => {
     document.body.appendChild(script);
 
     return () => {
-      // Cleanup script if component unmounts
       if (script.parentNode) script.parentNode.removeChild(script);
     };
   }, []);

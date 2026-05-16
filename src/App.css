@@ -39,7 +39,7 @@ svg {
   display: block;
 }
 
-/* Specific fix for TradingView widget */
+/* TradingView specific */
 .tradingview-wrapper iframe,
 .tradingview-container iframe {
   width: 100% !important;
@@ -47,7 +47,11 @@ svg {
   min-height: 300px;
 }
 
-/* All page containers – make them shrink on mobile */
+/* 
+  Remove the destructive !important max-width rule.
+  Pages now control their own max-width via their own CSS.
+  Only provide basic padding.
+*/
 .dashboard,
 .deposit-page,
 .withdraw-page,
@@ -62,15 +66,14 @@ svg {
 .admin-users,
 .portfolio-page,
 .trade-page {
-  width: 100%;
-  max-width: 100% !important;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1rem;
   padding-right: 1rem;
+  width: 100%;
 }
 
-/* Keep original max-width for large screens, but never exceed viewport */
+/* Keep original max-width for large screens (no !important) */
 @media (min-width: 768px) {
   .dashboard {
     max-width: 1200px;
@@ -96,7 +99,7 @@ svg {
   }
 }
 
-/* ===== Table responsiveness helper (replaces old global table rule) ===== */
+/* ===== Table responsiveness helper ===== */
 .table-responsive {
   width: 100%;
   overflow-x: auto;
@@ -108,11 +111,7 @@ svg {
   white-space: nowrap;
 }
 
-/* Remove the old global table rule that caused problems:
-   table { display: block; overflow-x: auto; ... }
-   It is no longer present. */
-
-/* Better touch targets for buttons on mobile */
+/* Better touch targets */
 button,
 a,
 input,
@@ -120,26 +119,26 @@ select {
   touch-action: manipulation;
 }
 
-/* Prevent text resize on orientation change */
+/* Prevent iOS zoom on focus */
 input,
 select,
 textarea {
-  font-size: 16px; /* Prevents iOS zoom on focus */
+  font-size: 16px;
 }
 
-/* Additional fix for homepage */
+/* Homepage fix */
 .homepage {
   width: 100% !important;
   overflow-x: hidden;
 }
 
-/* Fix for any absolute positioned dropdown that might overflow */
+/* Notification dropdown overflow */
 .notif-dropdown {
   left: auto !important;
   right: 0 !important;
 }
 
-/* Ensure any fixed-width cards shrink */
+/* Cards shrink */
 .balance-card,
 .account-details-card,
 .portfolio,
@@ -148,7 +147,7 @@ textarea {
   overflow-x: hidden;
 }
 
-/* Responsive base font for readability */
+/* Smaller base font on mobile */
 @media (max-width: 640px) {
   html {
     font-size: 14px;
