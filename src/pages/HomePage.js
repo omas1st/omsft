@@ -10,7 +10,7 @@ const HomePage = () => {
       <div className="overlay">
         {/* Main content */}
         <div className="hero-content">
-          <h1 className="brand">OMS</h1>
+          <h1 className="brand">TradeAxis</h1>
           <p className="tagline">Trade with Confidence</p>
           <div className="buttons">
             <Link to="/login" className="btn btn-login">Login</Link>
@@ -21,7 +21,7 @@ const HomePage = () => {
         {/* Footer */}
         <footer className="footer">
           <p className="footer-text">
-            OMS Ltd is a Securities Dealer registered in Seychelles with registration number 28121997-1 and authorised by the Financial Services Authority (FSA) with licence number MS028.
+            TradeAxis Ltd is a Securities Dealer registered in Seychelles with registration number 28121997-1 and authorised by the Financial Services Authority (FSA) with licence number MS028.
           </p>
         </footer>
       </div>
