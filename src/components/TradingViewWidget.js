@@ -1,15 +1,22 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './TradingViewWidget.css';
 
 const TradingViewWidget = () => {
   const containerRef = useRef(null);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
+    // Preconnect to TradingView CDN
+    const link = document.createElement('link');
+    link.rel = 'preconnect';
+    link.href = 'https://s3.tradingview.com';
+    document.head.appendChild(link);
+
     const script = document.createElement('script');
     script.src = 'https://s3.tradingview.com/tv.js';
     script.async = true;
     script.onload = () => {
-      if (window.TradingView) {
+      if (window.TradingView && containerRef.current) {
         new window.TradingView.widget({
           autosize: true,
           symbol: 'FX:EURUSD',
@@ -24,12 +31,31 @@ const TradingViewWidget = () => {
           allow_symbol_change: true,
           container_id: containerRef.current.id,
         });
+        setLoaded(true);
       }
     };
     document.body.appendChild(script);
+
+    return () => {
+      // Cleanup script if component unmounts
+      if (script.parentNode) script.parentNode.removeChild(script);
+    };
   }, []);
 
-  return <div id="tradingview_widget" ref={containerRef} className="tradingview-container"></div>;
+  return (
+    <div className="tradingview-wrapper">
+      {!loaded && (
+        <div className="tradingview-skeleton">
+          <div className="skeleton-chart"></div>
+        </div>
+      )}
+      <div
+        id="tradingview_widget"
+        ref={containerRef}
+        className={`tradingview-container ${loaded ? 'visible' : 'hidden'}`}
+      ></div>
+    </div>
+  );
 };
 
 export default TradingViewWidget;

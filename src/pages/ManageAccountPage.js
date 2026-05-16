@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { fetchManageAccount, updateLeverage, updateAccountName, updateMt5Password, getMt5Details, setMt5Password } from '../utils/api';
+import { fetchManageAccount, updateLeverage, getMt5Details, setMt5Password } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 import './ManageAccountPage.css';
 
@@ -9,8 +9,6 @@ const ManageAccountPage = () => {
   const [activeTab, setActiveTab] = useState('funds');
   const [fundsData, setFundsData] = useState(null);
   const [leverage, setLeverage] = useState('1000:1');
-  const [accountName, setAccountName] = useState('');
-  const [mt5Password, setMt5PasswordState] = useState('');
   const [loginDetails, setLoginDetails] = useState(null);
   const [showLoginDetails, setShowLoginDetails] = useState(false);
   const navigate = useNavigate();
@@ -19,7 +17,6 @@ const ManageAccountPage = () => {
     fetchManageAccount().then(res => {
       setFundsData(res.data);
       setLeverage(res.data.leverage);
-      setAccountName(res.data.accountName || '');
     }).catch(() => {});
   }, []);
 
@@ -28,28 +25,6 @@ const ManageAccountPage = () => {
       await updateLeverage(leverage);
       alert('Leverage updated');
       fetchManageAccount().then(res => setFundsData(res.data));
-    } catch (err) {
-      alert('Update failed');
-    }
-  };
-
-  const handleNameChange = async () => {
-    try {
-      await updateAccountName(accountName);
-      alert('Account name updated');
-    } catch (err) {
-      alert('Update failed');
-    }
-  };
-
-  const handleMt5Password = async () => {
-    if (user.balance === 0) {
-      alert('You must make a deposit before changing MT5 password.');
-      return;
-    }
-    try {
-      await updateMt5Password(mt5Password);
-      alert('MT5 password updated');
     } catch (err) {
       alert('Update failed');
     }
@@ -88,6 +63,9 @@ const ManageAccountPage = () => {
           <p>Margin Level: {fundsData.marginLevel}%</p>
           <p>Credit: ${fundsData.credit.toFixed(2)}</p>
           <p>Leverage: {fundsData.leverage}</p>
+          {fundsData.totalProfit !== undefined && (
+            <p className="total-profit">Total Profit (Closed): ${fundsData.totalProfit.toFixed(2)}</p>
+          )}
         </div>
       )}
 
@@ -102,18 +80,6 @@ const ManageAccountPage = () => {
             </select>
             <button onClick={handleLeverageChange}>Update Leverage</button>
           </div>
-          <div className="setting-item">
-            <label>Change Account Name:</label>
-            <input type="text" value={accountName} onChange={e => setAccountName(e.target.value)} />
-            <button onClick={handleNameChange}>Update Name</button>
-          </div>
-          {user.balance > 0 && (
-            <div className="setting-item">
-              <label>Change Metatrader Password:</label>
-              <input type="password" value={mt5Password} onChange={e => setMt5PasswordState(e.target.value)} />
-              <button onClick={handleMt5Password}>Update MT5 Password</button>
-            </div>
-          )}
           <div className="setting-item">
             <button onClick={handleViewLoginDetails}>Metatrader Login Details</button>
           </div>

@@ -21,6 +21,9 @@ const AdminLayout = () => {
           <Link to="/admin/settings" className={isActive('/admin/settings')}>
             Settings
           </Link>
+          <Link to="/admin/closed-trades" className={isActive('/admin/closed-trades')}>
+            Closed Trades
+          </Link>
         </div>
       </nav>
       <main className="admin-content">

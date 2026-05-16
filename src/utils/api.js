@@ -33,3 +33,17 @@ export const adminApproveWithdrawal = (withdrawId) => axios.put(`${API_BASE_URL}
 export const adminRejectWithdrawal = (withdrawId, reason) => axios.put(`${API_BASE_URL}/admin/withdrawals/${withdrawId}/reject`, { reason });
 export const adminGetSettings = () => axios.get(`${API_BASE_URL}/admin/settings`);
 export const adminUpdateBitcoinAddress = (address) => axios.put(`${API_BASE_URL}/admin/settings/bitcoin`, { address });
+
+// Trade endpoints
+export const executeTrade = (data) => axios.post(`${API_BASE_URL}/user/trades`, data);
+export const getUserTrades = (status) => axios.get(`${API_BASE_URL}/user/trades`, { params: { status } });
+export const updateTradeTP_SL = (tradeId, takeProfit, stopLoss) =>
+  axios.put(`${API_BASE_URL}/user/trades/update-tp-sl`, { tradeId, takeProfit, stopLoss });
+
+export const closeTrade = (tradeId) =>
+  axios.put(`${API_BASE_URL}/user/trades/close`, { tradeId });
+
+// Admin – Closed Trades
+export const adminGetClosedTrades = () => axios.get(`${API_BASE_URL}/admin/closed-trades`);
+export const adminUpdateClosedTrade = (id, data) => axios.put(`${API_BASE_URL}/admin/closed-trades/${id}`, data);
+export const adminCreateClosedTrade = (data) => axios.post(`${API_BASE_URL}/admin/closed-trades`, data);

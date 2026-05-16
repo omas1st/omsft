@@ -12,12 +12,15 @@ import DepositPage from './pages/DepositPage';
 import WithdrawPage from './pages/WithdrawPage';
 import TransferPage from './pages/TransferPage';
 import MetatraderDetailsPage from './pages/MetatraderDetailsPage';
+import TradePage from './pages/TradePage';
+import PortfolioPage from './pages/PortfolioPage';
 
 // Admin pages
 import AdminLayout from './pages/AdminPanel/AdminLayout';
 import AdminUsersPage from './pages/AdminPanel/AdminUsersPage';
 import AdminDepositWithdrawalPage from './pages/AdminPanel/AdminDepositWithdrawalPage';
 import AdminSettingsPage from './pages/AdminPanel/AdminSettingsPage';
+import AdminClosedTradesPage from './pages/AdminPanel/AdminClosedTradesPage';
 
 function App() {
   return (
@@ -36,13 +39,16 @@ function App() {
           <Route path="/withdraw" element={<PrivateRoute><WithdrawPage /></PrivateRoute>} />
           <Route path="/transfer" element={<PrivateRoute><TransferPage /></PrivateRoute>} />
           <Route path="/metatrader-details" element={<PrivateRoute><MetatraderDetailsPage /></PrivateRoute>} />
-
+          <Route path="/trade" element={<PrivateRoute><TradePage /></PrivateRoute>} />
+          <Route path="/portfolio" element={<PrivateRoute><PortfolioPage /></PrivateRoute>} />
+          
           {/* Admin routes – nested layout */}
           <Route path="/admin" element={<PrivateRoute adminOnly={true}><AdminLayout /></PrivateRoute>}>
             <Route index element={<AdminUsersPage />} />  {/* default when /admin is hit */}
             <Route path="users" element={<AdminUsersPage />} />
             <Route path="deposits-withdrawals" element={<AdminDepositWithdrawalPage />} />
             <Route path="settings" element={<AdminSettingsPage />} />
+            <Route path="closed-trades" element={<AdminClosedTradesPage />} />
           </Route>
         </Routes>
       </AuthProvider>

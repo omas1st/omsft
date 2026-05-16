@@ -140,3 +140,8 @@
     padding: 1.5rem;
   }
 }
+
+.total-profit {
+  color: #00c853;
+  font-weight: bold;
+}
