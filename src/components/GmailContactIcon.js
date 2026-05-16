@@ -5,7 +5,7 @@ import './GmailContactIcon.css';
 const GmailContactIcon = () => {
   return (
     <a
-      href="mailto:omaslabs1st@gmail.com"
+      href="mailto:tradeaxis1st@gmail.com"
       className="gmail-contact-icon"
       title="Contact Support"
       aria-label="Email Support"
