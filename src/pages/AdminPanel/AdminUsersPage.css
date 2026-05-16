@@ -1,58 +1,47 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
+/* ========== Admin Users Page ========== */
 .admin-users {
-  padding: 2rem;
   color: #e0e0e0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  /* ------ containment fix ------ */
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .admin-users h2 {
   color: #ff9800;
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
+  margin: 0 0 1.2rem;
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
-/* ===== Table wrapper for scroll ===== */
+/* ---- Table wrapper for horizontal scroll ---- */
 .admin-users .table-container {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  background: #1e1e2f;
 }
 
 .admin-users table {
-  display: table;                 /* reset from global block */
   width: 100%;
-  min-width: 600px;               /* keep minimum */
+  min-width: 550px;            /* slightly narrower than original */
   border-collapse: collapse;
-  background: #1e1e2f;
-  border-radius: 10px;
-  overflow: hidden;
+  font-size: 0.82rem;          /* smaller, still readable */
+  background: inherit;
 }
 
 .admin-users th,
 .admin-users td {
-  padding: 1rem 1.2rem;
+  padding: 0.6rem 0.8rem;
   text-align: left;
   border-bottom: 1px solid #2a2a3d;
-  font-size: 0.95rem;
 }
 
 .admin-users th {
   background: #2a2a3d;
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 0.5px;
+  font-size: 0.72rem;
+  letter-spacing: 0.4px;
   color: #b0b0c0;
 }
 
@@ -60,73 +49,72 @@
   border-bottom: none;
 }
 
+/* ---- Action buttons ---- */
 .admin-users button {
-  padding: 0.45rem 1rem;
+  padding: 0.35rem 0.8rem;
   background: #ff9800;
   border: none;
   color: #fff;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   transition: all 0.2s;
-  margin-right: 8px;
-  box-shadow: 0 2px 6px rgba(255, 152, 0, 0.3);
+  margin-right: 6px;
+  box-shadow: 0 2px 6px rgba(255,152,0,0.25);
 }
 .admin-users button:hover {
   background: #e68900;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
 }
 .admin-users button:last-child {
   background: #d32f2f;
-  box-shadow: 0 2px 6px rgba(211, 47, 47, 0.3);
+  box-shadow: 0 2px 6px rgba(211,47,47,0.25);
 }
 .admin-users button:last-child:hover {
   background: #b71c1c;
 }
 
-/* ===== Edit Modal ===== */
+/* ---- Edit modal (mobile friendly) ---- */
 .edit-modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #1e1e2f;
-  padding: 2rem;
-  border-radius: 14px;
-  width: 90%;
-  max-width: 440px;
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: 92%;
+  max-width: 400px;
   z-index: 100;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.7);
   color: #e0e0e0;
 }
 
 .edit-modal h3 {
   margin-top: 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: #ff9800;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 }
 
 .edit-modal label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
 }
 
 .edit-modal input,
 .edit-modal textarea {
   width: 100%;
-  padding: 0.7rem 1rem;
-  margin-bottom: 1.2rem;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 1rem;
   background: #2a2a3d;
   border: 1px solid #3e3e50;
   color: #fff;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  transition: border-color 0.2s;
+  border-radius: 6px;
+  font-size: 0.85rem;
 }
 .edit-modal input:focus,
 .edit-modal textarea:focus {
@@ -136,24 +124,23 @@
 
 .edit-modal textarea {
   resize: vertical;
-  min-height: 80px;
+  min-height: 70px;
 }
 
 .edit-modal button {
-  margin-right: 10px;
-  padding: 0.6rem 1.3rem;
+  margin-right: 8px;
+  padding: 0.5rem 1.1rem;
   background: #ff9800;
   border: none;
   color: #fff;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
-  box-shadow: 0 2px 6px rgba(255, 152, 0, 0.35);
+  font-size: 0.85rem;
   transition: all 0.2s;
 }
 .edit-modal button:hover {
   background: #e68900;
-  transform: translateY(-1px);
 }
 .edit-modal button:last-child {
   background: #555;
@@ -163,11 +150,17 @@
   background: #777;
 }
 
-@media (max-width: 768px) {
-  .admin-users {
-    padding: 1.2rem;
+@media (max-width: 480px) {
+  .admin-users h2 {
+    font-size: 1.3rem;
   }
-  .edit-modal {
-    padding: 1.5rem;
+  .admin-users th,
+  .admin-users td {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.75rem;
+  }
+  .admin-users button {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.72rem;
   }
 }

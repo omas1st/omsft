@@ -1,45 +1,68 @@
+/* ========== Admin Layout ========== */
 .admin-layout {
   min-height: 100vh;
-  background: #121212;
+  background: #0f0f1a;
   color: #e0e0e0;
-  overflow-x: hidden;            /* prevent whole page overflow */
+  overflow-x: hidden;
 }
 
 .admin-navbar {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  background: #1e1e2f;
-  padding: 1rem 2rem;
+  background: #1a1a2e;
+  padding: 0.8rem 1.2rem;
   border-bottom: 1px solid #2a2a3d;
 }
 
 .admin-navbar h2 {
   color: #ff9800;
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 0.4rem;
 }
 
 .nav-links a {
-  color: #e0e0e0;
+  color: #b0b0c0;
   text-decoration: none;
-  padding: 0.5rem 0;
-  border-bottom: 2px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: #ff9800;
-  border-bottom-color: #ff9800;
+  color: #fff;
+  background: #ff9800;
 }
 
 .admin-content {
-  padding: 2rem;
-  overflow-x: hidden;            /* extra safety */
+  padding: 1.2rem;
+  overflow-x: hidden;
+}
+
+@media (max-width: 480px) {
+  .admin-navbar {
+    padding: 0.6rem 0.8rem;
+  }
+  .admin-navbar h2 {
+    font-size: 1.1rem;
+  }
+  .nav-links a {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+  }
+  .admin-content {
+    padding: 0.8rem;
+  }
 }
