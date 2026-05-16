@@ -19,7 +19,7 @@ export const getReferralCode = () => axios.get(`${API_BASE_URL}/user/referral-co
 export const getNotifications = () => axios.get(`${API_BASE_URL}/user/notifications`);
 export const getMt5Details = () => axios.get(`${API_BASE_URL}/user/mt5-details`);
 export const setMt5Password = (password) => axios.put(`${API_BASE_URL}/user/mt5-password`, { password });
-export const getBitcoinAddress = () => axios.get(`${API_BASE_URL}/user/bitcoin-address`); // NEW
+export const getBitcoinAddress = () => axios.get(`${API_BASE_URL}/user/bitcoin-address`);
 
 // Admin endpoints
 export const adminGetUsers = () => axios.get(`${API_BASE_URL}/admin/users`);
@@ -39,7 +39,6 @@ export const executeTrade = (data) => axios.post(`${API_BASE_URL}/user/trades`, 
 export const getUserTrades = (status) => axios.get(`${API_BASE_URL}/user/trades`, { params: { status } });
 export const updateTradeTP_SL = (tradeId, takeProfit, stopLoss) =>
   axios.put(`${API_BASE_URL}/user/trades/update-tp-sl`, { tradeId, takeProfit, stopLoss });
-
 export const closeTrade = (tradeId) =>
   axios.put(`${API_BASE_URL}/user/trades/close`, { tradeId });
 
@@ -47,3 +46,4 @@ export const closeTrade = (tradeId) =>
 export const adminGetClosedTrades = () => axios.get(`${API_BASE_URL}/admin/closed-trades`);
 export const adminUpdateClosedTrade = (id, data) => axios.put(`${API_BASE_URL}/admin/closed-trades/${id}`, data);
 export const adminCreateClosedTrade = (data) => axios.post(`${API_BASE_URL}/admin/closed-trades`, data);
+export const adminDeleteClosedTrade = (id) => axios.delete(`${API_BASE_URL}/admin/closed-trades/${id}`);   // NEW

@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { adminGetClosedTrades, adminUpdateClosedTrade, adminCreateClosedTrade, adminGetUsers } from '../../utils/api';
+import {
+  adminGetClosedTrades,
+  adminUpdateClosedTrade,
+  adminCreateClosedTrade,
+  adminGetUsers,
+  adminDeleteClosedTrade   // NEW import
+} from '../../utils/api';
 import './AdminClosedTradesPage.css';
 
 const AdminClosedTradesPage = () => {
@@ -7,9 +13,7 @@ const AdminClosedTradesPage = () => {
   const [users, setUsers] = useState([]);
   const [editTrade, setEditTrade] = useState(null);
   const [showCreate, setShowCreate] = useState(false);
-  // Edit form state
   const [editForm, setEditForm] = useState({});
-  // Create form state
   const [createForm, setCreateForm] = useState({
     userId: '', pair: '', type: 'buy', orderType: 'instant', lots: 0.01,
     openPrice: 0, closePrice: 0, profitLoss: 0, takeProfit: '', stopLoss: '', closedAt: ''
@@ -56,6 +60,17 @@ const AdminClosedTradesPage = () => {
     } catch (err) { alert('Creation failed'); }
   };
 
+  // ----- NEW: Delete handler -----
+  const handleDelete = async (tradeId) => {
+    if (!window.confirm('Delete this closed trade permanently? This will adjust the user balance.')) return;
+    try {
+      await adminDeleteClosedTrade(tradeId);
+      fetchTrades();
+    } catch (err) {
+      alert('Deletion failed');
+    }
+  };
+
   return (
     <div className="admin-closed-trades">
       <h2>Closed Trades</h2>
@@ -81,13 +96,14 @@ const AdminClosedTradesPage = () => {
               <td>{new Date(trade.closedAt).toLocaleDateString()}</td>
               <td>
                 <button onClick={() => handleEdit(trade)}>Edit</button>
+                <button onClick={() => handleDelete(trade._id)} className="delete-btn">Delete</button>  {/* NEW */}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      {/* Edit Modal */}
+      {/* Edit Modal – unchanged */}
       {editTrade && (
         <div className="modal-overlay">
           <div className="modal-content">
@@ -126,7 +142,7 @@ const AdminClosedTradesPage = () => {
         </div>
       )}
 
-      {/* Create Modal */}
+      {/* Create Modal – unchanged */}
       {showCreate && (
         <div className="modal-overlay">
           <div className="modal-content">

@@ -34,7 +34,7 @@ const MetatraderDetailsPage = () => {
   return (
     <div className="metatrader-details">
       <h2>Metatrader Login Details</h2>
-      <p>Server: oms-mt5Real</p>
+      <p>Server: tradeaxis-mt5Real</p>
       <p>MT5 Login: #{details.login}</p>
       <div>
         <label>Password:</label>
