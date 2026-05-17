@@ -9,42 +9,42 @@ export const CATEGORIES = {
 
 export const PAIRS = {
   forex: [
-    'EUR/USD', 'GBP/USD', 'USD/JPY', 'AUD/USD', 'USD/CAD',
-    'USD/CHF', 'NZD/USD', 'EUR/GBP', 'EUR/JPY', 'GBP/JPY',
-    'EUR/CHF', 'EUR/AUD', 'GBP/AUD', 'AUD/JPY', 'CHF/JPY',
-    'EUR/CAD', 'GBP/CAD', 'AUD/CAD', 'NZD/JPY', 'EUR/NZD',
-    'GBP/NZD', 'AUD/NZD', 'USD/SGD', 'EUR/SGD', 'GBP/SGD'
+    'AUD/CAD', 'AUD/CHF', 'AUD/JPY', 'AUD/NZD', 'AUD/SGD',
+    'AUD/USD', 'CAD/CHF', 'CAD/JPY', 'CHF/JPY', 'EUR/AUD',
+    'EUR/CAD', 'EUR/CHF', 'EUR/CZK', 'EUR/DKK', 'EUR/GBP',
+    'EUR/HKD', 'EUR/HUF', 'EUR/JPY', 'EUR/NOK', 'EUR/NZD',
+    'EUR/PLN', 'EUR/SEK', 'EUR/SGD', 'EUR/TRY', 'EUR/USD',
+    'EUR/ZAR', 'GBP/AUD', 'GBP/CAD', 'GBP/CHF', 'GBP/HUF',
+    'GBP/JPY', 'GBP/NOK', 'GBP/NZD', 'GBP/PLN', 'GBP/SEK',
+    'GBP/SGD', 'GBP/USD', 'GBP/ZAR', 'NZD/CAD', 'NZD/CHF',
+    'NZD/JPY', 'NZD/USD', 'SGD/JPY', 'TRY/JPY', 'USD/CAD',
+    'USD/CHF', 'USD/CNH', 'USD/CZK', 'USD/DKK', 'USD/HKD',
+    'USD/HUF', 'USD/INR', 'USD/JPY', 'USD/MXN', 'USD/NOK',
+    'USD/PLN', 'USD/SEK', 'USD/SGD', 'USD/THB', 'USD/TRY',
+    'USD/ZAR', 'ZAR/JPY'
   ],
   stocks: [
-    // ----- Original large-caps -----
-    'AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA',
-    'META', 'NFLX', 'NVDA', 'BABA', 'JPM',
-    'V', 'WMT', 'JNJ', 'PG', 'MA',
-    'BAC', 'DIS', 'ADBE', 'PYPL', 'INTC',
-
-    // ----- Broad NASDAQ additions (tech, biotech, consumer, etc.) -----
-    'AUDC', 'PIII',                     // specifically requested
-    'AMD', 'QCOM', 'AVGO', 'TXN', 'LRCX',
-    'KLAC', 'AMAT', 'MU', 'MRVL', 'NXPI',
-    'CRM', 'SNOW', 'DDOG', 'MDB', 'CRWD',
-    'ZS', 'PANW', 'FTNT', 'OKTA', 'NET',
-    'TEAM', 'PLTR', 'U', 'PATH', 'S',
-    'COIN', 'DKNG', 'ABNB', 'LYFT', 'ROKU',
-    'AMGN', 'GILD', 'REGN', 'VRTX', 'ILMN',
-    'MRNA', 'BIIB', 'SGEN',
-    'COST', 'SBUX', 'LULU', 'MAR', 'EXPE',
-    'BKNG', 'CHTR', 'TCOM',
-    'INTU', 'SQ', 'AFRM',
-    'ISRG', 'MELI', 'ASML', 'ADP', 'CSCO',
-    'CTAS', 'WDAY', 'CDNS', 'SNPS', 'ADSK',
-    'ROP', 'FISV', 'KDP', 'PCAR', 'NXST',
-
-    // ----- Ross Cameron small‑cap momentum plays -----
-    'LGVN', 'KAVL', 'VLCN', 'LIXT', 'CNSP',
-    'MEX', 'APHI', 'MRAM', 'ENRA', 'ATRA',
-    'MLGO', 'RGS',
-    'JBDI', 'BSLK', 'VRAX',
-    'SPEC', 'AREB', 'NXL', 'MINM'
+    'AAPL', 'ABNB', 'ADBE', 'ADP', 'ADSK',
+    'AFRM', 'AMAT', 'AMD', 'AMGN', 'AMZN',
+    'APHI', 'AREB', 'ASML', 'ATRA', 'AUDC',
+    'AVGO', 'BABA', 'BAC', 'BIIB', 'BKNG',
+    'BSLK', 'CDNS', 'CHTR', 'CNSP', 'COIN',
+    'COST', 'CRM', 'CRWD', 'CSCO', 'CTAS',
+    'DDOG', 'DIS', 'DKNG', 'ENRA', 'EXPE',
+    'FISV', 'FTNT', 'GILD', 'GOOGL', 'ILMN',
+    'INTC', 'INTU', 'ISRG', 'JBDI', 'JNJ',
+    'JPM', 'KAVL', 'KDP', 'KLAC', 'LGVN',
+    'LIXT', 'LRCX', 'LULU', 'LYFT', 'MA',
+    'MAR', 'MDB', 'MELI', 'META', 'MEX',
+    'MINM', 'MLGO', 'MRAM', 'MRNA', 'MRVL',
+    'MSFT', 'MU', 'NET', 'NFLX', 'NVDA',
+    'NXL', 'NXPI', 'NXST', 'OKTA', 'PANW',
+    'PATH', 'PCAR', 'PG', 'PIII', 'PLTR',
+    'PYPL', 'QCOM', 'REGN', 'RGS', 'ROKU',
+    'ROP', 'S', 'SBUX', 'SGEN', 'SNOW',
+    'SNPS', 'SQ', 'SPEC', 'TCOM', 'TEAM',
+    'TSLA', 'TXN', 'U', 'V', 'VLCN',
+    'VRAX', 'VRTX', 'WDAY', 'WMT', 'ZS'
   ],
   crypto: [
     'BTC/USD', 'ETH/USD', 'XRP/USD', 'LTC/USD', 'BCH/USD',
